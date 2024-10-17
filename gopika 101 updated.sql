@@ -95,19 +95,26 @@ from accident_101;
 select driver_id
 from participitated_101
 where damage_amount>=25000;
+
 select count(report_num)
 from car_101, participitated_101
 where car_101.reg_num=participitated_101.reg_num and car_101.model='Lancer';
+
 select count(distinct driver_id) CNT
 from participitated_101, accident_101
 where participitated_101.report_num=accident_101.report_num and accident_101.accident_date like '__08%';
+
 SELECT * FROM participitated_101 ORDER BY damage_amount DESC;
+
 SELECT AVG(damage_amount) FROM participitated_101;
+
 DELETE FROM participitated_101 
 WHERE damage_amount<(select avg(damage_amount) from participitated_101);
+
 SELECT name FROM person_101, participitated_101
 WHERE person_101.driver_id = participitated_101.driver_id
 AND damage_amount>(SELECT AVG(damage_amount) FROM participitated_101);
+
 SELECT MAX(damage_amount) FROM participitated_101;
 
 
