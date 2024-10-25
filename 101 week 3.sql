@@ -79,3 +79,37 @@ where bankacc_101.accno=depositor_101.accno
 and branch_name="SBI_ResidencyRoad"
 group by customer_name
 having count(*)>1;
+
+select branch_name,assets
+from branch_101;
+
+select customer_name
+from bankcustomer_101
+where city="Bangalore";
+
+select *
+from depositor_101;
+
+select branch_name,count(branch_name)
+from bankacc_101
+group by branch_name;
+
+select d.customer_name,b.balance
+from depositor_101 d,bankacc_101 b
+where d.accno=b.accno and  balance>5000;
+
+select branch_name 
+from loan_101 
+where amount = (select min(amount) from loan_101);
+
+select customer_name
+from bankcustomer_101
+where city="Delhi";
+
+select branch_name
+from branch_101
+where branch_name not in (select branch_name from loan_101);
+
+select customer_name 
+from loan_101 l, depositor_101 d,  bankacc_101 b
+where l.branch_name=b.branch_name and b.accno=d.accno;
